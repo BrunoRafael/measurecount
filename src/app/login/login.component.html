@@ -1,0 +1,16 @@
+<div class="jumbotron login-container">
+  <img src="assets/images/logo.png"/>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="loginInput">Login</label>
+      <input type="text" formControlName="loginInput" id="loginInput" class="form-control" aria-describedby="loginHelp" placeholder="Enter Login">
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password</label>
+      <input type="password" formControlName="passwordInput" id="passwordInput" class="form-control" placeholder="Password">
+    </div>
+    <div class="form-group text-right">
+      <button class="btn btn-info btn-block border-0 button">Enter</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,25 @@
+
+<div class="jumbotron user-register-form-container">
+  <form [formGroup]="userRegisterForm" (onSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" class="form-control" id="nameUserRegisterInput" placeholder="Nome"/>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="employeeUserRegisterInput" placeholder="Cargo"/>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="sectorUserRegisterInput" placeholder="Setor"/>
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control" id="emailUserRegisterInput" placeholder="Email"/>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="passwordUserRegisterInput" placeholder="Password"/>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="confirmPasswordUserRegisterInput" placeholder="Confirmar senha"/>
+    </div>
+    <button type="submit" class="btn btn-info btn-block">Cadastrar</button>
+  </form>
+</div>
+
