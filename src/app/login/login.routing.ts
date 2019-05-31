@@ -4,8 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 
 const routes: Routes = [
-    { path: '', component: LoginComponent },
-    { path:'error', component: ControlMessagesComponent }
+    { path: '', component: LoginComponent }
 ];
 
 export const LoginRoutingModule: ModuleWithProviders = RouterModule.forChild(routes);

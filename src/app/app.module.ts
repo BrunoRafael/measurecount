@@ -1,5 +1,6 @@
-import { LoginModule } from './login/login.module';
+import { LoginComponent } from './login/login.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { LoginModule } from './login/login.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,18 +12,17 @@ import { NgxElectronModule } from 'ngx-electron';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     NgxElectronModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    LoginModule,
-    DashboardModule
+    ReactiveFormsModule
   ],
-  exports: [LoginModule, FormsModule, ReactiveFormsModule],
+  exports: [FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,3 @@
-import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
@@ -8,8 +7,8 @@ const routes: Routes = [
         path: '', 
         component: DashboardComponent,
         children: [
-            { path: '', redirectTo:'/home', pathMatch:'full'},
-            { path: 'home', component: HomeComponent }
+            { path: '', redirectTo: 'home', pathMatch:'full'},
+            { path: 'home', loadChildren: './home/home.module#HomeModule' }
         ]
     }
 ]

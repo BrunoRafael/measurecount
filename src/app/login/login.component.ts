@@ -14,8 +14,7 @@ export class LoginComponent {
   loginForm: FormGroup
   electronService: ElectronService
 
-  constructor(private router: Router, private formBuilder: FormBuilder, 
-    private _electronService: ElectronService, private route: ActivatedRoute) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private _electronService: ElectronService) {
     this.loginForm = this.formBuilder.group({
       'loginInput': ['', Validators.required],
       'passwordInput': ['', Validators.required]
@@ -24,7 +23,7 @@ export class LoginComponent {
   onSubmit(){
     //if(!this.loginForm.invalid){
       console.log("Tudo ok");
-      this.router.navigate(["dashboard"])
+      this.router.navigate(["/dashboard"])
         .then(data => {
           console.log('Route exists, redirection is done');
         })
