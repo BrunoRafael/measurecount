@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-top',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuTopComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  logout(){
+    this.router.navigate(['./login']).
+    then(data => {
+      console.log('Route exists, redirection is done');
+    })
+    .catch(e => {
+      console.log('Route not found, redirection stopped with no error raised');
+    });
   }
 
 }

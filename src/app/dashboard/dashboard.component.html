@@ -1,5 +1,9 @@
-<app-sidebar></app-sidebar>
-<app-menu-top></app-menu-top>
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="dashboard-left d-inline-block">
+    <app-sidebar></app-sidebar>
+</div>
+<div class="dashboard-right d-inline-block">
+  <app-menu-top></app-menu-top>
+  <div class="jumbotron">
+    <router-outlet></router-outlet>
+  </div>
 </div>

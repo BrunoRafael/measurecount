@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +7,24 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   title = 'angular-project-training';
-  constructor(private router: Router) { }
+  showBody: Boolean;
+
+  items: any = ["alert-info", "alert-success", "alert-warning", "alert-danger"];
+
+  constructor() {}
 
   ngOnInit() {}
 
-  logout(){
-    this.router.navigate(['./login']).
-    then(data => {
-      console.log('Route exists, redirection is done');
-    })
-    .catch(e => {
-      console.log('Route not found, redirection stopped with no error raised');
-    });
+  showPageContent(){
+    this.showBody = !this.showBody;
+  }
+
+  onChangeAlert(selectedValue){
+    console.log(selectedValue);
+  }
+
+  onKeyUp(event: KeyboardEvent){
+    console.log((<HTMLInputElement> event.target).value);
   }
 
 }

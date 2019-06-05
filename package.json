@@ -29,6 +29,7 @@
     "jquery": "^3.4.1",
     "ngx-electron": "^2.1.1",
     "popper": "^1.0.1",
+    "python-shell": "^1.0.7",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

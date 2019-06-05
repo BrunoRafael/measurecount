@@ -5,12 +5,14 @@ import { DashboardRouting} from './dashboard.routing';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MenuTopComponent } from './menu-top/menu-top.component';
+import { AboutComponent } from './about/about.component';
+import { RegisterItemComponent } from './register-item/register-item.component';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRouting
   ],
-  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent ]
+  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent ]
 })
 export class DashboardModule { }

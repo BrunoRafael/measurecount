@@ -1,9 +1,11 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { url } = require('url');
 const { path } = require('path');
+const {PythonShell} = require('python-shell');
 
 let mainWindow = null;
 let createUserWindow = null;
+let pyshell = new PythonShell('./plugin/plugin.py', { mode: "json" });
 
 let createMainWindow = async () => {
     let mainWindow = new BrowserWindow({
@@ -33,6 +35,11 @@ let createRegisterUserWindow = async () => {
         createUserWindow = null;
     });
 }
+
+pyshell.on('message', async (message) => {
+    // received a message sent from the Python script (a simple "print" statement)
+    console.log(message);
+});
 
 app.on('ready', createMainWindow);
 

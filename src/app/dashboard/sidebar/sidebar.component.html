@@ -1,3 +1,7 @@
-<p>
-  sidebar works!
-</p>
+<button class="open-nav-button" (onClick)="openSidebarLateral()" > &#9776;Open</button>
+<div class="sidenav"> 
+  <!--<a href="javascript:void(0)" class="closebtn">&times;</a>-->
+  <a href="#" [routerLink]="['/dashboard/home']">Início</a>
+  <a href="#" [routerLink]="['/dashboard/registerItem']">Cadastar Item</a>
+  <a href="#" [routerLink]="['/dashboard/about']">Sobre</a>
+</div>
