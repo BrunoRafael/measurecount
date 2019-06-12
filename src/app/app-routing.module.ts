@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' }
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
 ];
 
 export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(routes, {useHash: true});

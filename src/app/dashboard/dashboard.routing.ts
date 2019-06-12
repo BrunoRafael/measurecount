@@ -10,7 +10,7 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [
             { path: '', redirectTo: 'home', pathMatch:'full'},
-            { path: 'home', loadChildren: './home/home.module#HomeModule' },
+            { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
             { path: 'registerItem', component: RegisterItemComponent},
             { path: 'about', component: AboutComponent }
         ]

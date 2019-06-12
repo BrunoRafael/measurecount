@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,7 @@ import { RegisterItemComponent } from './register-item/register-item.component';
 
 @NgModule({
   imports: [
+    FormsModule,
     CommonModule,
     DashboardRouting
   ],

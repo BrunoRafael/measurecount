@@ -13,6 +13,7 @@ export class LoginComponent {
 
   loginForm: FormGroup
   electronService: ElectronService
+  model: any = {}
 
   constructor(private router: Router, private formBuilder: FormBuilder, private _electronService: ElectronService) {
     this.loginForm = this.formBuilder.group({
