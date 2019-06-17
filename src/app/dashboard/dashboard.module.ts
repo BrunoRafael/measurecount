@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,12 +9,15 @@ import { MenuTopComponent } from './menu-top/menu-top.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterItemComponent } from './register-item/register-item.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
-    DashboardRouting
+    ReactiveFormsModule,
+    DashboardRouting,
+    BsDropdownModule.forRoot()
   ],
   declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent, RegisterUserComponent ]
 })
