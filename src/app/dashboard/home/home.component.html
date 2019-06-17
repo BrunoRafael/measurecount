@@ -1,0 +1,29 @@
+<div style="text-align:center">
+  <div class="list-group">
+    <a href="javascript:void(0)" *ngFor="let item of weighingHistory;" 
+    (click)="selectItem(item)" 
+    class="list-group-item list-group-item-action flex-column align-items-start" 
+    [ngClass]="{'active': item.number == selectedItem.number}">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Lote {{item.number}}</h5>
+        <small>{{item.time}}</small>
+      </div>
+      <h4 class="mb-1">{{item.name}}</h4>
+      <p class="mb-1">{{item.value}}</p>
+      <small>{{item.units}}</small>
+    </a>
+  </div>
+</div>
+
+<div class="card bg-light mb-12">
+  <div class="card-header">Detalhes do item</div>
+  <div class="card-body">
+    <h5 class="card-title">Lote {{selectedItem.number}}</h5>
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1">{{selectedItem.name}}</h4>
+    </div>
+    <p class="mb-1">{{selectedItem.value}}</p>
+    <small>{{selectedItem.units}}</small>
+  </div>
+</div>
+ 
