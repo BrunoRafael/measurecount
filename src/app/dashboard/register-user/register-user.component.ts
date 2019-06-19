@@ -1,5 +1,9 @@
+import { AuthService } from './../../services/auth.service';
 import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -11,7 +15,11 @@ export class RegisterUserComponent implements OnInit {
   registerUserForm: FormGroup
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private userService: UserService,
+    private router: Router,
+    private toastr: ToastrService) { }
 
   get formControl() { return this.registerUserForm.controls; }
 
@@ -31,6 +39,22 @@ export class RegisterUserComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
+    if(!this.registerUserForm.invalid){
+      this.userService.registerUser(this.registerUserForm.value).subscribe(
+        (user) => {
+          this.router.navigate(["/dashboard/home"])
+              .then(data => {
+                this.toastr.success('Sucesso', `Usuário ${user["firstName"]} cadastrado com sucesso`);
+              })
+              .catch(e => {
+                this.toastr.error('Erro', e.message);
+              });
+        }, 
+        (err) => {
+          this.toastr.error('Erro', err.message);
+        }
+      );
+    }
   }
 
   private matchPassword(controlName: string, matchingControlName: string){
