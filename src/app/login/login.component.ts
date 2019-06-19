@@ -50,8 +50,6 @@ export class LoginComponent implements OnDestroy {
           this.toastr.warning('Autenticação falhou', err.message);
         }
       )
-
-      
     } else {
       this.submitted = true;
     }

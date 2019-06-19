@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { ToastrModule } from 'ngx-toastr';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  exports: [FormsModule, ReactiveFormsModule],
-  providers: [AuthService, HttpClientService, AuthGuard],
-  bootstrap: [AppComponent]
+  exports: [ FormsModule, ReactiveFormsModule ],
+  providers: [ UserService, AuthService, HttpClientService, AuthGuard ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
