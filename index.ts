@@ -9,12 +9,11 @@ let createUserWindow = null;
 
 let createMainWindow = async () => {
     let mainWindow = new BrowserWindow({
-        width: 1800,
-        height: 1800,
         webPreferences: {
             nodeIntegration: true
         }
     });
+    mainWindow.setFullScreen(true);
 
     mainWindow.loadURL(`file://${__dirname}/dist/angular-project-training/index.html`);
     mainWindow.on('closed', () => {
