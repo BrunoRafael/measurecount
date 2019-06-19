@@ -1,43 +1,64 @@
-import { Component } from '@angular/core';
+import { AuthService } from './../services/auth.service';
+import { Component, OnDestroy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ElectronService } from 'ngx-electron';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from './login.router.animations';
+import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass'],
   animations: [routerTransition()]
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
 
   loginForm: FormGroup
   electronService: ElectronService
   model: any = {}
+  submitted = false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private _electronService: ElectronService) {
+  loginSubscribe: Subscription;
+
+  constructor(private router: Router, 
+    private formBuilder: FormBuilder, 
+    private authService: AuthService,
+    private toastr: ToastrService) {
     this.loginForm = this.formBuilder.group({
-      'loginInput': ['', Validators.required],
-      'passwordInput': ['', Validators.required]
+      'login': ['', Validators.required],
+      'password': ['', Validators.required]
     });
   }
+
+  get formControl() { return this.loginForm.controls; }
+
   onSubmit(){
-    //if(!this.loginForm.invalid){
-      console.log("Tudo ok");
-      this.router.navigate(["/dashboard"])
-        .then(data => {
-          console.log('Route exists, redirection is done');
-        })
-        .catch(e => {
-          console.log('Route not found, redirection stopped with no error raised');
-        });
-    //} else {
-    // console.log("Invalid login");
-    //}
+    if(!this.loginForm.invalid){
+      let credentials = this.loginForm.value;
+      this.loginSubscribe = this.authService.login(credentials.login, credentials.password).subscribe(
+        (user) => { 
+          this.router.navigate(["/dashboard"])
+            .then(data => {
+              this.toastr.success('Seja bem vindo!', user["firstName"]);
+            })
+            .catch(e => {
+              this.toastr.warning('Error', 'Toastr fun!');
+            });
+        },
+        (err) => { 
+          this.toastr.warning('Autenticação falhou', err.message);
+        }
+      )
+
+      
+    } else {
+      this.submitted = true;
+    }
   }
 
-  createUser(){
-    this._electronService.ipcRenderer.send('open-create-user-window');
+  ngOnDestroy() {
+      // unsubscribe to ensure no memory leaks
+      this.loginSubscribe.unsubscribe();
   }
-
 }
