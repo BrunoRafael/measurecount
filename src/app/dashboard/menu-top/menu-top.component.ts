@@ -10,7 +10,4 @@ export class MenuTopComponent implements OnInit {
 
   constructor(private router: Router) { }
   ngOnInit() {}
-
-  
-
 }

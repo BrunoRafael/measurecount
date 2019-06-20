@@ -10,15 +10,18 @@ import { AboutComponent } from './about/about.component';
 import { RegisterItemComponent } from './register-item/register-item.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { SearchUserComponent } from './search-user/search-user.component';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
+    FilterPipeModule,
     ReactiveFormsModule,
     DashboardRouting,
     BsDropdownModule.forRoot()
   ],
-  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent, RegisterUserComponent ]
+  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent, RegisterUserComponent, SearchUserComponent ]
 })
 export class DashboardModule { }
