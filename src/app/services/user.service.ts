@@ -1,11 +1,14 @@
+import { AuthService } from './auth.service';
 import { HttpClientService } from './http.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
+import * as _ from 'lodash'; 
+
 @Injectable()
 export class UserService {
     users: any [] = [{ 
-        login: "admin", 
+        login: "saulo", 
         password: "admin#123",
         role: "admin",
         firstName: "Saulo",
@@ -14,7 +17,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "admin", 
+        login: "leandro", 
         password: "admin#123",
         role: "admin",
         firstName: "Leandro",
@@ -26,13 +29,13 @@ export class UserService {
         login: "admin", 
         password: "admin#123",
         role: "admin",
-        firstName: "Usuário",
-        lastName: "Padrão",
+        firstName: "",
+        lastName: "",
         sector: "---",
         jobFunction: "---"
     },
     { 
-        login: "admin", 
+        login: "sergio", 
         password: "admin#123",
         role: "admin",
         firstName: "Sérgio",
@@ -41,7 +44,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "admin", 
+        login: "leocilia", 
         password: "admin#123",
         role: "admin",
         firstName: "Leocilia",
@@ -50,7 +53,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "admin", 
+        login: "lucineia", 
         password: "admin#123",
         role: "admin",
         firstName: "Lucinéia",
@@ -59,8 +62,8 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operator", 
-        password: "admin#123",
+        login: "operador", 
+        password: "operador#123",
         role: "operator",
         firstName: "Usuário",
         lastName: "Padrão",
@@ -68,7 +71,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "admin", 
+        login: "marta", 
         password: "admin#123",
         role: "admin",
         firstName: "Marta",
@@ -77,7 +80,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "admin", 
+        login: "silvia", 
         password: "admin#123",
         role: "admin",
         firstName: "Silvia",
@@ -86,7 +89,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "marcos", 
         password: "operador#123",
         role: "operator",
         firstName: "Marcos",
@@ -95,7 +98,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "carol", 
         password: "operador#123",
         role: "operator",
         firstName: "Carol",
@@ -104,7 +107,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "kalber", 
         password: "operador#123",
         role: "operator",
         firstName: "Kalber",
@@ -113,7 +116,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "bianca", 
         password: "operador#123",
         role: "operator",
         firstName: "Bianca",
@@ -122,7 +125,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "diego", 
         password: "operador#123",
         role: "operator",
         firstName: "Diego",
@@ -131,7 +134,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "pedro", 
         password: "operador#123",
         role: "operator",
         firstName: "Pedro",
@@ -140,7 +143,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "bruno", 
         password: "operador#123",
         role: "operator",
         firstName: "Bruno",
@@ -149,7 +152,7 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operador", 
+        login: "rafael", 
         password: "operador#123",
         role: "operator",
         firstName: "Rafael",
@@ -166,6 +169,19 @@ export class UserService {
             observer.next(this.users);
         });
         //return this.httpService.getAllUsersInfo();
+    }
+
+    removeUser(user){
+        //REMOVER APÓS REALIZAR COMUNICAÇÃO COM O SERVIDOR
+        for (let i = 0; i < this.users.length; i++){
+            let savedUser = this.users[i];
+            if(_.isEqual(user, savedUser)){
+                // REMOVER APÓS SE COMUNICAR COM O SERVIDOR
+                return new Observable((observer) => {
+                    observer.next(savedUser);
+                })
+            }
+        }
     }
 
     registerUser(user){
