@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { HttpClientService } from './http.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -61,8 +62,8 @@ export class UserService {
         jobFunction: "---"
     },
     { 
-        login: "operator", 
-        password: "admin#123",
+        login: "operador", 
+        password: "operador#123",
         role: "operator",
         firstName: "Usuário",
         lastName: "Padrão",
@@ -177,7 +178,7 @@ export class UserService {
             if(_.isEqual(user, savedUser)){
                 // REMOVER APÓS SE COMUNICAR COM O SERVIDOR
                 return new Observable((observer) => {
-                    this.users.splice(i, 1);
+                    observer.next(savedUser);
                 })
             }
         }

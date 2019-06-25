@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { ConfirmModalComponent } from './../../modals/confirm-modal/confirm-modal.component';
 import { UserService } from 'src/app/services/user.service';
 import { FormBuilder } from '@angular/forms';
@@ -6,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-user',
@@ -18,10 +20,12 @@ export class SearchUserComponent implements OnInit {
   searchUserValueFilter: any;
   
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder, 
     private userService: UserService,
     private toastr: ToastrService,
-    private _modalService: NgbModal
+    private _modalService: NgbModal,
+    private authService: AuthService
   ){}
 
   ngOnInit() {
@@ -46,22 +50,34 @@ export class SearchUserComponent implements OnInit {
   }
 
   removeUser(user: any){
-    let modal = this._modalService.open(ConfirmModalComponent, user);
-    modal.componentInstance.selectedUser = user;
-    modal.result.then((user) => {
-      this.userService.removeUser(user).subscribe(removedUser => {
-        //REMOVER APÓS REALIZAR COMUNICAÇÃO COM O SERVIDOR
-        for (let i = 0; i < this.users.length; i++){
-          let savedUser = this.users[i];
-          if(_.isEqual(removedUser, savedUser)){
-              // REMOVER APÓS SE COMUNICAR COM O SERVIDOR
-              this.users.splice(i, 1);
+    if(user.login == "admin" || user.login == "operador") {
+      this.toastr.warning('Não é permitido remover nenhum usuário padrão', 'Error');
+    } else {
+      let modal = this._modalService.open(ConfirmModalComponent, user);
+      modal.componentInstance.selectedUser = user;
+      modal.result.then((user) => {
+        this.userService.removeUser(user).subscribe(removedUser => {
+          for (let i = 0; i < this.users.length; i++){
+            let savedUser = this.users[i];
+            if(_.isEqual(removedUser, savedUser)){
+                this.users.splice(i, 1);
+                this.toastr.success('Usuário removido com sucesso!', user["firstName"]);
+                if(_.isEqual(this.authService.currentLoggedUserSubject.value, removedUser)){
+                  this.router.navigate(["./login"])
+                    .then(data => {
+                      this.toastr.success('Realize autenticação novamente', `O usuário ${user["firstName"]} foi removido`);
+                    })
+                    .catch(e => {
+                      this.toastr.warning('Error', 'Não foi possível voltar a página de autenticação');
+                    });
+                }
+            }
           }
-      }
+        });
+      }).catch((reason) => {
+        console.log('Dismissed action: ' + reason);
       });
-    }).catch((reason) => {
-      console.log('Dismissed action: ' + reason);
-    });
+    }
   }
 
   onChanges(): void {
