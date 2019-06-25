@@ -14,6 +14,10 @@ export class HttpClientService{
         return this.sendRequest(`${environment.serverUrl}/users/create`, "post", user);
     }
 
+    updateUser(user: any){
+        return this.sendRequest(`${environment.serverUrl}/users/update`, "put", user);
+    }
+    
     getAllUsersInfo(){
         return this.sendRequest(`${environment.serverUrl}/users`, "get");
     }

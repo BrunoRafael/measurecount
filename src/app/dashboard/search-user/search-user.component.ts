@@ -46,7 +46,13 @@ export class SearchUserComponent implements OnInit {
   }
 
   editUser(user: any){
-    console.log(user);
+    this.router.navigate(["/dashboard/editUser"], {state: {data: user}}).
+      then(data => {
+        this.toastr.success('Sucesso', `Usuário ${user["firstName"]} cadastrado com sucesso`);
+      })
+      .catch(e => {
+        this.toastr.error('Erro', e.message);
+      });
   }
 
   removeUser(user: any){

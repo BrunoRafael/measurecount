@@ -12,6 +12,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { SearchUserComponent } from './search-user/search-user.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     DashboardRouting,
     BsDropdownModule.forRoot()
   ],
-  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent, RegisterUserComponent, SearchUserComponent ]
+  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent, RegisterUserComponent, SearchUserComponent, EditUserComponent ]
 })
 export class DashboardModule { }
