@@ -15,15 +15,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { UserService } from './services/user.service';
+import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ConfirmModalComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    NgbModule,
     HttpClientModule,
     NgxElectronModule,
     AppRoutingModule,
@@ -33,6 +37,7 @@ import { UserService } from './services/user.service';
   ],
   exports: [ FormsModule, ReactiveFormsModule ],
   providers: [ UserService, AuthService, HttpClientService, AuthGuard ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  entryComponents: [ConfirmModalComponent]
 })
 export class AppModule { }
