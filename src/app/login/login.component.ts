@@ -21,7 +21,8 @@ export class LoginComponent implements OnDestroy {
 
   loginSubscribe: Subscription;
 
-  constructor(private router: Router, 
+  constructor(
+    private router: Router, 
     private formBuilder: FormBuilder, 
     private authService: AuthService,
     private toastr: ToastrService) {

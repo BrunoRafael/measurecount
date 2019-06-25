@@ -50,9 +50,6 @@
     <div class="col-md-4 mb-3">
       <label for="user-registration-login">login</label>
       <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="user-registration-login-prepend">@</span>
-        </div>
         <input type="text" class="form-control" id="user-registration-login" formControlName="login" placeholder="Login" aria-describedby="user-registration-login-prepend" 
         [ngClass]="{ 'is-invalid': submitted && formControl.login.errors }">
         <div *ngIf="submitted && formControl.login.errors" class="invalid-feedback">

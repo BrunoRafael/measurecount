@@ -5,7 +5,7 @@
     <div class="menu-list">
       <ul id="menu-content" class="menu-content collapse out">
         <li>
-          <a href="#"><i class="fa fa-users fa-lg"></i> Usuários <span class="arrow"></span></a>
+          <a href="javascript:void(0)"><i class="fa fa-users fa-lg"></i> Usuários <span class="arrow"></span></a>
         </li>
         <ul class="sub-menu" *ngIf ="(auth.currentUserLogged.role == 'admin')">
             <li [ngClass]="{'active': activePage == 'registerUser'}">
@@ -16,17 +16,16 @@
             </li>
         </ul>
         <li>
-          <!--<a href="javascript:void(0)" class="closebtn">&times;</a>-->
-          <a href="#" [routerLink]="['/dashboard/home']">Histórico</a>
+          <a href="#" [routerLink]="['/dashboard/home']" [ngClass]="{'active': activePage == 'historyPage'}" (click)="onChangePage('historyPage')">Histórico</a>
         </li>
         <li>
-          <a href="#" [routerLink]="['/dashboard/registerItem']">Cadastar Item</a>
+          <a href="#" [routerLink]="['/dashboard/registerItem']" [ngClass]="{'active': activePage == 'registerItemPage'}" (click)="onChangePage('registerItemPage')">Cadastar Item</a>
         </li>
         <li>
-          <a href="#" [routerLink]="['/dashboard/about']">Sobre</a>
+          <a href="#" [routerLink]="['/dashboard/about']" [ngClass]="{'active': activePage == 'aboutPage'}" (click)="onChangePage('aboutPage')">Sobre</a>
         </li>
         <li>
-          <a href="#" (click)="logout()">Sair</a>
+          <a href="#" (click)="logout()" [ngClass]="{'active': activePage == 'logoutPage'}" (click)="onChangePage('logoutPage')">Sair</a>
         </li>
       </ul>
   </div>
