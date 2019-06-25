@@ -1,7 +1,7 @@
 export class User {
     jobFunction: String;
     sector: String;
-    accessType: String;
+    role: String;
     firstName: String;
     lastName: String;
     login: String;

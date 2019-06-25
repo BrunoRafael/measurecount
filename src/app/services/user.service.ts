@@ -1,24 +1,172 @@
 import { HttpClientService } from './http.service';
-import { BehaviorSubject, Observable, throwError, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { User } from '../model/User';
-import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
     users: any [] = [{ 
         login: "admin", 
         password: "admin#123",
-        role: "admin"
+        role: "admin",
+        firstName: "Saulo",
+        lastName: "Oliveira",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "admin", 
+        password: "admin#123",
+        role: "admin",
+        firstName: "Leandro",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "admin", 
+        password: "admin#123",
+        role: "admin",
+        firstName: "Usuário",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "admin", 
+        password: "admin#123",
+        role: "admin",
+        firstName: "Sérgio",
+        lastName: "Autentico",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "admin", 
+        password: "admin#123",
+        role: "admin",
+        firstName: "Leocilia",
+        lastName: "Pereira",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "admin", 
+        password: "admin#123",
+        role: "admin",
+        firstName: "Lucinéia",
+        lastName: "Araujo",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "operator", 
+        password: "admin#123",
+        role: "operator",
+        firstName: "Usuário",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "admin", 
+        password: "admin#123",
+        role: "admin",
+        firstName: "Marta",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "admin", 
+        password: "admin#123",
+        role: "admin",
+        firstName: "Silvia",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
     },
     { 
         login: "operador", 
         password: "operador#123",
-        role: "operator"
+        role: "operator",
+        firstName: "Marcos",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
     },
+    { 
+        login: "operador", 
+        password: "operador#123",
+        role: "operator",
+        firstName: "Carol",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "operador", 
+        password: "operador#123",
+        role: "operator",
+        firstName: "Kalber",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "operador", 
+        password: "operador#123",
+        role: "operator",
+        firstName: "Bianca",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "operador", 
+        password: "operador#123",
+        role: "operator",
+        firstName: "Diego",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "operador", 
+        password: "operador#123",
+        role: "operator",
+        firstName: "Pedro",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "operador", 
+        password: "operador#123",
+        role: "operator",
+        firstName: "Bruno",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    },
+    { 
+        login: "operador", 
+        password: "operador#123",
+        role: "operator",
+        firstName: "Rafael",
+        lastName: "Padrão",
+        sector: "---",
+        jobFunction: "---"
+    }
     ]
 
-    constructor(){}
+    constructor(private httpService: HttpClientService){}
+
+    getUsers(){
+        return new Observable((observer) => {
+            observer.next(this.users);
+        });
+        //return this.httpService.getAllUsersInfo();
+    }
 
     registerUser(user){
 

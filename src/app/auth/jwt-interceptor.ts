@@ -5,7 +5,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../model/User';
 
 export class JwtInterceptor implements HttpInterceptor {
-    currentUserSubject: BehaviorSubject<User>;
     constructor(private authService: AuthService){}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

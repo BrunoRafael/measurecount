@@ -43,7 +43,7 @@ export class LoginComponent implements OnDestroy {
               this.toastr.success('Seja bem vindo!', user["firstName"]);
             })
             .catch(e => {
-              this.toastr.warning('Error', 'Toastr fun!');
+              this.toastr.warning('Error', 'Não foi possível concluir autenticação');
             });
         },
         (err) => { 

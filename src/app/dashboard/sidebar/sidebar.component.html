@@ -1,10 +1,33 @@
 <button class="open-nav-button" (onClick)="openSidebarLateral()" > &#9776;Open</button>
-<div class="sidenav container-fluid">
-  <img class="img-fluid" src="assets/images/corning-logo-menu.jpg"/>
-  <!--<a href="javascript:void(0)" class="closebtn">&times;</a>-->
-  <a href="#" [routerLink]="['/dashboard/home']">Histórico</a>
-  <a href="#" [routerLink]="['/dashboard/registerItem']">Cadastar Item</a>
-  <a href="#" [routerLink]="['/dashboard/registerUser']" *ngIf ="(auth.currentUserLogged.role == 'admin')">Cadastrar Usuário</a>
-  <a href="#" [routerLink]="['/dashboard/about']">Sobre</a>
-  <a href="#" (click)="logout()">Sair</a>
+<div class="sidenav nav-side-menu container-fluid">
+    <div class="brand">CORNING</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+      <ul id="menu-content" class="menu-content collapse out">
+        <li>
+          <a href="#"><i class="fa fa-users fa-lg"></i> Usuários <span class="arrow"></span></a>
+        </li>
+        <ul class="sub-menu" *ngIf ="(auth.currentUserLogged.role == 'admin')">
+            <li [ngClass]="{'active': activePage == 'registerUser'}">
+              <a href="#" [routerLink]="['/dashboard/registerUser']" (click)="onChangePage('registerUser')">Cadastrar Usuário</a>
+            </li>
+            <li [ngClass]="{'active': activePage == 'searchUser'}">
+              <a href="#" [routerLink]="['/dashboard/searchUser']" (click)="onChangePage('searchUser')">Buscar Usuários</a>
+            </li>
+        </ul>
+        <li>
+          <!--<a href="javascript:void(0)" class="closebtn">&times;</a>-->
+          <a href="#" [routerLink]="['/dashboard/home']">Histórico</a>
+        </li>
+        <li>
+          <a href="#" [routerLink]="['/dashboard/registerItem']">Cadastar Item</a>
+        </li>
+        <li>
+          <a href="#" [routerLink]="['/dashboard/about']">Sobre</a>
+        </li>
+        <li>
+          <a href="#" (click)="logout()">Sair</a>
+        </li>
+      </ul>
+  </div>
 </div>

@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.sass']
 })
 export class SidebarComponent implements OnInit {
+
+  activePage = 'registerUser'
+
   constructor(private router: Router, private auth: AuthService) { }
   ngOnInit() {}
   openSidebarLateral(){}
@@ -25,6 +28,10 @@ export class SidebarComponent implements OnInit {
       }
     )
     
+  }
+
+  onChangePage(pageName){
+    this.activePage = pageName
   }
 
 }
