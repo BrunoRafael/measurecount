@@ -1,6 +1,6 @@
 import { AuthService } from './auth.service';
 import { HttpClientService } from './http.service';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import * as _ from 'lodash'; 
@@ -13,8 +13,8 @@ export class UserService {
         role: "admin",
         firstName: "Saulo",
         lastName: "Oliveira",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "leandro", 
@@ -22,8 +22,8 @@ export class UserService {
         role: "admin",
         firstName: "Leandro",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "admin", 
@@ -31,8 +31,8 @@ export class UserService {
         role: "admin",
         firstName: "",
         lastName: "",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "sergio", 
@@ -40,8 +40,8 @@ export class UserService {
         role: "admin",
         firstName: "Sérgio",
         lastName: "Autentico",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "leocilia", 
@@ -49,8 +49,8 @@ export class UserService {
         role: "admin",
         firstName: "Leocilia",
         lastName: "Pereira",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "lucineia", 
@@ -58,8 +58,8 @@ export class UserService {
         role: "admin",
         firstName: "Lucinéia",
         lastName: "Araujo",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "operador", 
@@ -67,8 +67,8 @@ export class UserService {
         role: "operator",
         firstName: "Usuário",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "marta", 
@@ -76,8 +76,8 @@ export class UserService {
         role: "admin",
         firstName: "Marta",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "silvia", 
@@ -85,8 +85,8 @@ export class UserService {
         role: "admin",
         firstName: "Silvia",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "marcos", 
@@ -94,8 +94,8 @@ export class UserService {
         role: "operator",
         firstName: "Marcos",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "carol", 
@@ -103,8 +103,8 @@ export class UserService {
         role: "operator",
         firstName: "Carol",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "kalber", 
@@ -112,8 +112,8 @@ export class UserService {
         role: "operator",
         firstName: "Kalber",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "bianca", 
@@ -121,8 +121,8 @@ export class UserService {
         role: "operator",
         firstName: "Bianca",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "diego", 
@@ -130,8 +130,8 @@ export class UserService {
         role: "operator",
         firstName: "Diego",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "pedro", 
@@ -139,8 +139,8 @@ export class UserService {
         role: "operator",
         firstName: "Pedro",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "bruno", 
@@ -148,8 +148,8 @@ export class UserService {
         role: "operator",
         firstName: "Bruno",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     },
     { 
         login: "rafael", 
@@ -157,8 +157,8 @@ export class UserService {
         role: "operator",
         firstName: "Rafael",
         lastName: "Padrão",
-        sector: "---",
-        jobFunction: "---"
+        sector: "",
+        jobFunction: ""
     }
     ]
 
@@ -182,6 +182,37 @@ export class UserService {
                 })
             }
         }
+    }
+
+    updateUser(user){
+        //REMOVER APÓS REALIZAR COMUNICAÇÃO COM O SERVIDOR
+        for (let i = 0; i < this.users.length; i++){
+            let savedUser = this.users[i];
+            if(user["login"] == savedUser["login"]){
+                return new Observable((observer) => {
+                    this.users[i] = user
+                    observer.next(user);
+                })
+            }
+        }
+
+        /*return this.httpService.createUser(user).pipe(
+            map( user => {
+                if(user && user.token){
+                    localStorage.setItem("loggedUser", JSON.stringify(user));
+                    // REMOVER APÓS SE COMUNICAR COM O SERVIDOR
+                    return new Observable((observer) => {
+                        observer.next(user);
+                    })
+                }
+
+                return user;
+            }),
+            catchError(err => {
+                console.log('caught mapping error and rethrowing', err);
+                return throwError(new Error("Usuário já cadastrado"));
+            })
+        )*/
     }
 
     registerUser(user){

@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
     {
@@ -17,6 +18,7 @@ const routes: Routes = [
             { path: 'registerItem', component: RegisterItemComponent},
             { path: 'registerUser', component: RegisterUserComponent, canActivate: [AuthGuard]},
             { path: 'searchUser', component: SearchUserComponent, canActivate: [AuthGuard]},
+            { path: 'editUser', component: EditUserComponent, canActivate: [AuthGuard]},
             { path: 'about', component: AboutComponent }
         ]
     }

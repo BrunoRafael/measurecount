@@ -10,6 +10,7 @@
       <tr>
         <td> Login </td>
         <td> Nome </td>
+        <td> Sobrenome </td>
         <td> Cargo </td>
         <td> Setor </td>
         <td> Tipo de Acesso </td>
@@ -18,7 +19,8 @@
     <tbody>
       <tr *ngFor="let user of users | filterBy:searchUserValueFilter">
         <td> {{user.login}} </td>
-        <td> {{user.firstName + " " + user.lastName}} </td>
+        <td> {{user.firstName }} </td>
+        <td> {{user.lastName}} </td>
         <td> {{user.jobFunction}} </td>
         <td> {{user.sector}} </td>
         <td> {{user.role}} </td>
