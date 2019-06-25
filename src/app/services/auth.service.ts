@@ -44,7 +44,6 @@ export class AuthService {
                 return user;
             }),
             catchError(err => {
-                console.log('caught mapping error and rethrowing', err);
                 return throwError(new Error("Login ou senha inválidos"));
             })
         )

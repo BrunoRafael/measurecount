@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  activePage = 'registerUser'
+  activePage = 'historyPage'
 
   constructor(private router: Router, private auth: AuthService) { }
   ngOnInit() {}

@@ -22,12 +22,14 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "@types/electron": "^1.6.10",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "electron": "^5.0.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
+    "lodash": "^4.17.11",
     "ngx-bootstrap": "^4.3.0",
     "ngx-electron": "^2.1.1",
     "ngx-filter-pipe": "^2.1.2",
@@ -59,6 +61,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
+    "typedoc": "^0.14.2",
     "typescript": "~3.2.2"
   }
 }
