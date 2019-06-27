@@ -7,7 +7,7 @@
         <li>
           <a href="javascript:void(0)"><i class="fa fa-users fa-lg"></i> Usuários <span class="arrow"></span></a>
         </li>
-        <ul class="sub-menu" *ngIf ="(auth.currentUserLogged.role == 'admin')">
+        <ul class="sub-menu" *ngIf ="(userService.currentUserLogged().role == 'admin')">
             <li [ngClass]="{'active': activePage == 'registerUser'}">
               <a href="#" [routerLink]="['/dashboard/registerUser']" (click)="onChangePage('registerUser')">Cadastrar Usuário</a>
             </li>
