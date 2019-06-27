@@ -19,4 +19,8 @@ export class HttpClientService{
     getAllUsers(){
         return this.http.get<any>(`${environment.serverUrl}/users`);
     }
+
+    login (credentials: any){
+        return this.http.post<any>(`${environment.serverUrl}/login`, credentials);
+    }
 }

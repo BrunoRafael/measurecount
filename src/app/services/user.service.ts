@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClientService } from './http.service';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -5,6 +6,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash'; 
 import { map, catchError } from 'rxjs/operators';
 import { User } from '../model/User';
+
 
 @Injectable()
 export class UserService {
@@ -60,6 +62,34 @@ export class UserService {
                 return throwError(new Error("Usuário já cadastrado"));
             })
         )
+    }
+
+    login(login: String, password: String){       
+        return this.httpService.login({login, password}).pipe(
+            map( user => {
+                if(user && user["token"]){
+                    localStorage.setItem("loggedUser", JSON.stringify(user));
+                    this.currentLoggedUserSubject.next(user);
+                }
+
+                return users;
+            }),
+            catchError((err: HttpErrorResponse) => {
+                if(err.status == 401){
+                    return throwError(new Error("Login ou senha inválidos"));
+                }
+
+                return throwError(err.message);
+            })
+        )
+    }
+
+    logout(){
+        localStorage.removeItem("loggedUser");
+        this.currentLoggedUserSubject.next(null);
+        return new Observable(observer => {
+            observer.next(null);
+        });
     }
 
     
