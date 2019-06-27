@@ -1,4 +1,4 @@
-import { AuthService } from './../../services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,12 +11,12 @@ export class SidebarComponent implements OnInit {
 
   activePage = 'historyPage'
 
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private userService: UserService) { }
   ngOnInit() {}
   openSidebarLateral(){}
 
   logout(){
-    this.auth.logout().subscribe(
+    this.userService.logout().subscribe(
       user => {
         this.router.navigate(['./login']).
         then(data => {

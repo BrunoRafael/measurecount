@@ -1,4 +1,4 @@
-import { AuthService } from './../services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnDestroy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ElectronService } from 'ngx-electron';
@@ -15,8 +15,8 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnDestroy {
 
   loginForm: FormGroup
-  electronService: ElectronService
-  model: any = {}
+  electronService: ElectronService;
+  model: any = {};
   submitted = false;
 
   loginSubscribe: Subscription;
@@ -24,7 +24,7 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private router: Router, 
     private formBuilder: FormBuilder, 
-    private authService: AuthService,
+    private userService: UserService,
     private toastr: ToastrService) {
     this.loginForm = this.formBuilder.group({
       'login': ['', Validators.required],
@@ -37,11 +37,11 @@ export class LoginComponent implements OnDestroy {
   onSubmit(){
     if(!this.loginForm.invalid){
       let credentials = this.loginForm.value;
-      this.loginSubscribe = this.authService.login(credentials.login, credentials.password).subscribe(
-        (user) => { 
+      this.loginSubscribe = this.userService.login(credentials.login, credentials.password).subscribe(
+        () => { 
           this.router.navigate(["/dashboard"])
             .then(data => {
-              this.toastr.success('Seja bem vindo!', user["firstName"]);
+              this.toastr.success('Seja bem vindo!', "");
             })
             .catch(e => {
               this.toastr.warning('Error', 'Não foi possível concluir autenticação');

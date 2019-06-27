@@ -26,10 +26,23 @@ export class UserService {
             map( response => {
                 return response;
             }),
-            catchError(err => {
-                console.log('caught mapping error and rethrowing', err);
-                return throwError(new Error("Usuário já cadastrado"));
+            catchError((err: HttpErrorResponse) => {
+                if(err.status == 401){
+                    return throwError(new Error("Login ou senha inválidos"));
+                }
+
+                return throwError(err.message);
             })
         )    
     }
+
+    logout(){
+        localStorage.removeItem("loggedUser");
+        this.currentLoggedUserSubject.next(null);
+        return new Observable(observer => {
+            observer.next(null);
+        });
+    }
+
+    
 }
