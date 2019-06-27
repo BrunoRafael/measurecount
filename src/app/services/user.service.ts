@@ -85,7 +85,7 @@ export class UserService {
                     this.currentLoggedUserSubject.next(user);
                 }
 
-                return users;
+                return user;
             }),
             catchError((err: HttpErrorResponse) => {
                 if(err.status == 401){
@@ -103,15 +103,5 @@ export class UserService {
         return new Observable(observer => {
             observer.next(null);
         });
-    }
-
-    logout(){
-        localStorage.removeItem("loggedUser");
-        this.currentLoggedUserSubject.next(null);
-        return new Observable(observer => {
-            observer.next(null);
-        });
-    }
-
-    
+    }    
 }
