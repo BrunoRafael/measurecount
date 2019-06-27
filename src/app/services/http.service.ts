@@ -2,7 +2,6 @@ import { User } from './../model/User';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpClientService{
@@ -15,5 +14,9 @@ export class HttpClientService{
 
     updateUser(user: any){
         return this.http.put<any>(`${environment.serverUrl}/users/${user.id}`, user);
+    }
+
+    getAllUsers(){
+        return this.http.get<any>(`${environment.serverUrl}/users`);
     }
 }

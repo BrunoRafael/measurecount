@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash'; 
 import { map, catchError } from 'rxjs/operators';
 import { User } from '../model/User';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
@@ -44,4 +43,24 @@ export class UserService {
             })
         )
     }
+
+    getAllUsers(){
+        return this.httpService.getAllUsers().pipe(
+            map( users => {
+                if(users){
+                    for(let i in users){
+                        localStorage.setItem(`${users[i].login}` , JSON.stringify(users[i]));
+                    }
+                }
+
+                return users;
+            }),
+            catchError(err => {
+                console.log('caught mapping error and rethrowing', err);
+                return throwError(new Error("Usuário já cadastrado"));
+            })
+        )
+    }
+
+    
 }
