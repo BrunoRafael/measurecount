@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClientService } from './http.service';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -6,7 +5,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash'; 
 import { map, catchError } from 'rxjs/operators';
 import { User } from '../model/User';
-
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
@@ -22,22 +21,16 @@ export class UserService {
         return this.currentLoggedUserSubject.value;
     }
 
-    createUser(user: User){
-        return this.httpService.createUser(user).pipe(
-            map( response => {
-                return response;
-            }),
-            catchError(err => {
-                console.log('caught mapping error and rethrowing', err);
-                return throwError(new Error("Usuário já cadastrado"));
-            })
-        )    
-    }
+    getAllUsers(){
+        return this.httpService.getAllUsers().pipe(
+            map( users => {
+                if(users){
+                    for(let i in users){
+                        localStorage.setItem(`${users[i].login}` , JSON.stringify(users[i]));
+                    }
+                }
 
-    updateUser(user: User){
-        return this.httpService.updateUser(user).pipe(
-            map( response => {
-                return user;
+                return users;
             }),
             catchError(err => {
                 console.log('caught mapping error and rethrowing', err);
@@ -60,22 +53,28 @@ export class UserService {
         )
     }
 
-    getAllUsers(){
-        return this.httpService.getAllUsers().pipe(
-            map( users => {
-                if(users){
-                    for(let i in users){
-                        localStorage.setItem(`${users[i].login}` , JSON.stringify(users[i]));
-                    }
-                }
-
-                return users;
+    updateUser(user: User){
+        return this.httpService.updateUser(user).pipe(
+            map( response => {
+                return user;
             }),
             catchError(err => {
                 console.log('caught mapping error and rethrowing', err);
                 return throwError(new Error("Usuário já cadastrado"));
             })
         )
+    }
+
+    createUser(user: User){
+        return this.httpService.createUser(user).pipe(
+            map( response => {
+                return response;
+            }),
+            catchError(err => {
+                console.log('caught mapping error and rethrowing', err);
+                return throwError(new Error("Usuário já cadastrado"));
+            })
+        )    
     }
 
     login(login: String, password: String){       
@@ -96,6 +95,14 @@ export class UserService {
                 return throwError(err.message);
             })
         )
+    }
+
+    logout(){
+        localStorage.removeItem("loggedUser");
+        this.currentLoggedUserSubject.next(null);
+        return new Observable(observer => {
+            observer.next(null);
+        });
     }
 
     logout(){
