@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
@@ -13,6 +14,7 @@ export class RegisterUserComponent implements OnInit {
 
   registerUserForm: FormGroup
   submitted = false;
+
   constructor(
     private formBuilder: FormBuilder, 
     private userService: UserService,
@@ -28,7 +30,6 @@ export class RegisterUserComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       firstName: ['', Validators.required],
-      lastName: [''],
       role: ['operator'],
       login: ['', [Validators.required]]
     }, {
@@ -39,13 +40,11 @@ export class RegisterUserComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if(!this.registerUserForm.invalid){
-      let user = this.registerUserForm.value;
-      delete user["confirmPassword"];
-      this.userService.createUser(user).subscribe(
+      this.userService.registerUser(this.registerUserForm.value).subscribe(
         (user) => {
           this.router.navigate(["/dashboard/home"])
               .then(data => {
-                this.toastr.success('Sucesso', `Usuário cadastrado`);
+                this.toastr.success('Sucesso', `Usuário ${user["firstName"]} cadastrado com sucesso`);
               })
               .catch(e => {
                 this.toastr.error('Erro', e.message);
