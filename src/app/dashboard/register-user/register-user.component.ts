@@ -1,4 +1,3 @@
-import { AuthService } from './../../services/auth.service';
 import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
@@ -30,6 +29,7 @@ export class RegisterUserComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       role: ['operator'],
       login: ['', [Validators.required]]
     }, {
@@ -40,7 +40,7 @@ export class RegisterUserComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if(!this.registerUserForm.invalid){
-      this.userService.registerUser(this.registerUserForm.value).subscribe(
+      this.userService.createUser(this.registerUserForm.value).subscribe(
         (user) => {
           this.router.navigate(["/dashboard/home"])
               .then(data => {
