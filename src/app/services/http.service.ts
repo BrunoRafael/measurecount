@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpClientService{
-    constructor(private http: HttpClient){}
     
-    login (credentials: any){
-        return this.sendRequest(`${environment.serverUrl}/authentication`, "post", credentials);
-    }
+    constructor(private http: HttpClient){}
+
     createUser(user: any){
-        return this.sendRequest(`${environment.serverUrl}/users/create`, "post", user);
+        return this.http.post<any>(`${environment.serverUrl}/users`, user);
     }
 
     updateUser(user: any){
-        return this.sendRequest(`${environment.serverUrl}/users/update`, "put", user);
-    }
-    
-    getAllUsersInfo(){
-        return this.sendRequest(`${environment.serverUrl}/users`, "get");
+        return this.http.put<any>(`${environment.serverUrl}/users/${user.id}`, user);
     }
 
-    sendRequest(url, type, body=null, params = null): Observable<any> {
-        return this.http[type]<any>(url, { params: params }, body)
+    removeUser(user: any){
+        return this.http.delete<any>(`${environment.serverUrl}/users/${user.id}`);
+    }
+
+    getAllUsers(){
+        return this.http.get<any>(`${environment.serverUrl}/users`);
+    }
+
+    login (credentials: any){
+        return this.http.post<any>(`${environment.serverUrl}/login`, credentials);
     }
 }
