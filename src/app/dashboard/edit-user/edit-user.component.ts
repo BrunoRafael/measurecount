@@ -27,8 +27,8 @@ export class EditUserComponent implements OnInit {
     this.updateUserForm = this.formBuilder.group({
       jobFunction: [updatedUser.jobFunction, Validators.required],
       sector: [updatedUser.sector, Validators.required],
-      password: [updatedUser.password, [Validators.required, Validators.minLength(6)]],
-      confirmPassword: [updatedUser.password, Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
       firstName: [updatedUser.firstName, Validators.required],
       lastName: [updatedUser.lastName],
       role: [updatedUser.role],
@@ -42,11 +42,16 @@ export class EditUserComponent implements OnInit {
     if(action == "Send"){
       this.submitted = true;
       if(!this.updateUserForm.invalid){
-        this.userService.updateUser(this.updateUserForm.value).subscribe(
+        //Get User by ID
+        let sendUser = this.updateUserForm.value
+        let savedUser = JSON.parse(localStorage.getItem(this.updateUserForm.value.login));
+ 
+        sendUser["id"] = savedUser["id"];
+        this.userService.updateUser(sendUser).subscribe(
           (user) => {
             this.router.navigate(["/dashboard/searchUser"])
                 .then(data => {
-                  this.toastr.success('Sucesso', `Usuário ${user["firstName"]} atualizado com sucesso`);
+                  this.toastr.success('Sucesso', `Usuário atualizado com sucesso`);
                 })
                 .catch(e => {
                   this.toastr.error('Erro', e.message);
