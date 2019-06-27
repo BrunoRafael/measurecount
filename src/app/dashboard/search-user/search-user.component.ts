@@ -1,4 +1,3 @@
-import { AuthService } from './../../services/auth.service';
 import { ConfirmModalComponent } from './../../modals/confirm-modal/confirm-modal.component';
 import { UserService } from 'src/app/services/user.service';
 import { FormBuilder } from '@angular/forms';
@@ -24,8 +23,7 @@ export class SearchUserComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private userService: UserService,
     private toastr: ToastrService,
-    private _modalService: NgbModal,
-    private authService: AuthService
+    private _modalService: NgbModal
   ){}
 
   ngOnInit() {
@@ -33,11 +31,11 @@ export class SearchUserComponent implements OnInit {
       searchUserValue: ''
     })
 
-    this.userService.getUsers().subscribe(
+    this.userService.getAllUsers().subscribe(
       (usersResponse) => {
         this.users = usersResponse;
       },
-      (err) => {
+      (reason) => {
         this.toastr.warning('Error', 'Não foi possível buscar usuário');
       }
     )
@@ -46,13 +44,17 @@ export class SearchUserComponent implements OnInit {
   }
 
   editUser(user: any){
-    this.router.navigate(["/dashboard/editUser"], {state: {data: user}}).
-      then(data => {
-        this.toastr.success('Sucesso', `Usuário ${user["firstName"]} cadastrado com sucesso`);
-      })
-      .catch(e => {
-        this.toastr.error('Erro', e.message);
-      });
+    if(user.login == "admin" || user.login == "operador") {
+      this.toastr.warning('Não é permitido editar nenhum usuário padrão', 'Error');
+    } else {
+      this.router.navigate(["/dashboard/editUser"], {state: {data: user}}).
+        then(data => {
+          this.toastr.success('Sucesso', `Usuário ${user["firstName"]} editado com sucesso`);
+        })
+        .catch(reason => {
+          this.toastr.error('Erro', reason.message);
+        });
+    }
   }
 
   removeUser(user: any){
@@ -68,12 +70,12 @@ export class SearchUserComponent implements OnInit {
             if(_.isEqual(removedUser, savedUser)){
                 this.users.splice(i, 1);
                 this.toastr.success('Usuário removido com sucesso!', user["firstName"]);
-                if(_.isEqual(this.authService.currentLoggedUserSubject.value, removedUser)){
+                if(_.isEqual(this.userService.currentUserLogged(), removedUser)){
                   this.router.navigate(["./login"])
                     .then(data => {
                       this.toastr.success('Realize autenticação novamente', `O usuário ${user["firstName"]} foi removido`);
                     })
-                    .catch(e => {
+                    .catch(reason => {
                       this.toastr.warning('Error', 'Não foi possível voltar a página de autenticação');
                     });
                 }
