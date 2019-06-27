@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClientService } from './http.service';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
