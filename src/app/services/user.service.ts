@@ -86,7 +86,7 @@ export class UserService {
                     this.currentLoggedUserSubject.next(user);
                 }
 
-                return user;
+                return users;
             }),
             catchError((err: HttpErrorResponse) => {
                 if(err.status == 401){

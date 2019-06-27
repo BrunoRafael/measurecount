@@ -1,4 +1,5 @@
 export class User {
+    id: String;
     jobFunction: String;
     sector: String;
     role: String;
