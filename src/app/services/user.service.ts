@@ -46,6 +46,20 @@ export class UserService {
         )
     }
 
+    removeUser(user: User){
+        return this.httpService.removeUser(user).pipe(
+            map( response => {
+                //if(response){
+                    return user;
+                //}
+            }),
+            catchError(err => {
+                console.log('caught mapping error and rethrowing', err);
+                return throwError(new Error("Usuário já cadastrado"));
+            })
+        )
+    }
+
     getAllUsers(){
         return this.httpService.getAllUsers().pipe(
             map( users => {

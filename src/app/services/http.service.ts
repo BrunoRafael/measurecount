@@ -16,6 +16,10 @@ export class HttpClientService{
         return this.http.put<any>(`${environment.serverUrl}/users/${user.id}`, user);
     }
 
+    removeUser(user: any){
+        return this.http.delete<any>(`${environment.serverUrl}/users/${user.id}`);
+    }
+
     getAllUsers(){
         return this.http.get<any>(`${environment.serverUrl}/users`);
     }
