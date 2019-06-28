@@ -40,7 +40,9 @@ export class RegisterUserComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if(!this.registerUserForm.invalid){
-      this.userService.createUser(this.registerUserForm.value).subscribe(
+      let user = this.registerUserForm.value;
+      delete user["confirmPassword"];
+      this.userService.createUser(user).subscribe(
         (user) => {
           this.router.navigate(["/dashboard/home"])
               .then(data => {

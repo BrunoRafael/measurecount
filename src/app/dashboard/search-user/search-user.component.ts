@@ -47,10 +47,7 @@ export class SearchUserComponent implements OnInit {
     if(user.login == "admin" || user.login == "operador") {
       this.toastr.warning('Não é permitido editar nenhum usuário padrão', 'Error');
     } else {
-      this.router.navigate(["/dashboard/editUser"], {state: {data: user}}).
-        then(data => {
-          this.toastr.success('Sucesso', `Usuário ${user["firstName"]} editado com sucesso`);
-        })
+      this.router.navigate(["/dashboard/editUser"], {state: {data: user}})
         .catch(reason => {
           this.toastr.error('Erro', reason.message);
         });
@@ -64,12 +61,13 @@ export class SearchUserComponent implements OnInit {
       let modal = this._modalService.open(ConfirmModalComponent, user);
       modal.componentInstance.selectedUser = user;
       modal.result.then((user) => {
-        this.userService.removeUser(user).subscribe(removedUser => {
+        this.userService.removeUser(user).subscribe((removedUser: any) => {
           for (let i = 0; i < this.users.length; i++){
             let savedUser = this.users[i];
             if(_.isEqual(removedUser, savedUser)){
                 this.users.splice(i, 1);
-                this.toastr.success('Usuário removido com sucesso!', user["firstName"]);
+                localStorage.removeItem(removedUser.login);
+                this.toastr.success('Sucesso',  `Usuário ${removedUser["firstName"]} removido com sucesso!`, );
                 if(_.isEqual(this.userService.currentUserLogged(), removedUser)){
                   this.router.navigate(["./login"])
                     .then(data => {

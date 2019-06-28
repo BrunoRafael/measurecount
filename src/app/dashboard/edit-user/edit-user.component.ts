@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/User';
 
 @Component({
   selector: 'app-edit-user',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class EditUserComponent implements OnInit {
 
-  updateUserForm: FormGroup
+  updateUserForm: FormGroup;
+  updatedUser: any;
   submitted = false;
 
   constructor(
@@ -23,16 +25,16 @@ export class EditUserComponent implements OnInit {
   get formControl() { return this.updateUserForm.controls; }
 
   ngOnInit() {
-    let updatedUser = history.state.data;
+    this.updatedUser = history.state.data;
     this.updateUserForm = this.formBuilder.group({
-      jobFunction: [updatedUser.jobFunction, Validators.required],
-      sector: [updatedUser.sector, Validators.required],
+      jobFunction: [this.updatedUser.jobFunction, Validators.required],
+      sector: [this.updatedUser.sector, Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      firstName: [updatedUser.firstName, Validators.required],
-      lastName: [updatedUser.lastName],
-      role: [updatedUser.role],
-      login: [updatedUser.login, [Validators.required]]
+      firstName: [this.updatedUser.firstName, Validators.required],
+      lastName: [this.updatedUser.lastName],
+      role: [this.updatedUser.role],
+      login: [this.updatedUser.login, [Validators.required]]
     }, {
         validator: this.matchPassword("password", "confirmPassword")
     });
@@ -43,15 +45,20 @@ export class EditUserComponent implements OnInit {
       this.submitted = true;
       if(!this.updateUserForm.invalid){
         //Get User by ID
-        let sendUser = this.updateUserForm.value
-        let savedUser = JSON.parse(localStorage.getItem(this.updateUserForm.value.login));
+        let newUpdatedUser = this.updateUserForm.value
+        let persistedUser = JSON.parse(localStorage.getItem(this.updatedUser.login));
  
-        sendUser["id"] = savedUser["id"];
-        this.userService.updateUser(sendUser).subscribe(
+        newUpdatedUser["id"] = persistedUser["id"];
+        delete newUpdatedUser["confirmPassword"];
+        this.userService.updateUser(newUpdatedUser).subscribe(
           (user) => {
+            //Remove usuário antes da edição e adiciona novo usuário com valores editados
+            localStorage.removeItem(this.updatedUser.login);
+            localStorage.setItem(newUpdatedUser.login, newUpdatedUser);
+            
             this.router.navigate(["/dashboard/searchUser"])
                 .then(data => {
-                  this.toastr.success('Sucesso', `Usuário atualizado com sucesso`);
+                  this.toastr.success('Sucesso', `Usuário ${user["firstName"]} atualizado com sucesso`);
                 })
                 .catch(e => {
                   this.toastr.error('Erro', e.message);
