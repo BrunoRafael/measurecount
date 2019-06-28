@@ -46,19 +46,19 @@ export class EditUserComponent implements OnInit {
       if(!this.updateUserForm.invalid){
         //Get User by ID
         let newUpdatedUser = this.updateUserForm.value
-        let persistedUser = JSON.parse(localStorage.getItem(this.updatedUser.login));
+        let persistedUser = JSON.parse(localStorage.getItem(this.updatedUser.id));
  
         newUpdatedUser["id"] = persistedUser["id"];
         delete newUpdatedUser["confirmPassword"];
         this.userService.updateUser(newUpdatedUser).subscribe(
           (user) => {
             //Remove usuário antes da edição e adiciona novo usuário com valores editados
-            localStorage.removeItem(this.updatedUser.login);
-            localStorage.setItem(newUpdatedUser.login, newUpdatedUser);
+            localStorage.removeItem(this.updatedUser.id);
+            localStorage.setItem(newUpdatedUser.id, newUpdatedUser);
             
             this.router.navigate(["/dashboard/searchUser"])
                 .then(data => {
-                  this.toastr.success('Sucesso', `Usuário ${user["firstName"]} atualizado com sucesso`);
+                  this.toastr.success('Sucesso', `Usuário ${user["firstName"] + " " + user["lastName"]} atualizado com sucesso`);
                 })
                 .catch(e => {
                   this.toastr.error('Erro', e.message);
