@@ -1,0 +1,783 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-project-training documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">angular-project-training documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>SidebarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/dashboard/sidebar/sidebar.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-sidebar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./sidebar.component.sass</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./sidebar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activePage">activePage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#logout">logout</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onChangePage">onChangePage</a>
+                            </li>
+                            <li>
+                                <a href="#openSidebarLateral">openSidebarLateral</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, auth: <a href="../injectables/AuthService.html">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/dashboard/sidebar/sidebar.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <b>
+                            logout
+                        </b>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/dashboard/sidebar/sidebar.component.ts:18</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/dashboard/sidebar/sidebar.component.ts:15</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onChangePage"></a>
+                    <span class="name">
+                        <b>
+                            onChangePage
+                        </b>
+                        <a href="#onChangePage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onChangePage(pageName)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/dashboard/sidebar/sidebar.component.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pageName</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openSidebarLateral"></a>
+                    <span class="name">
+                        <b>
+                            openSidebarLateral
+                        </b>
+                        <a href="#openSidebarLateral"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openSidebarLateral()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/app/dashboard/sidebar/sidebar.component.ts:16</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="activePage"></a>
+                        <span class="name">
+                            <b>
+                            activePage</b>
+                            <a href="#activePage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;registerUser&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/dashboard/sidebar/sidebar.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AuthService } from &#x27;./../../services/auth.service&#x27;;
+import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+@Component({
+  selector: &#x27;app-sidebar&#x27;,
+  templateUrl: &#x27;./sidebar.component.html&#x27;,
+  styleUrls: [&#x27;./sidebar.component.sass&#x27;]
+})
+export class SidebarComponent implements OnInit {
+
+  activePage &#x3D; &#x27;registerUser&#x27;
+
+  constructor(private router: Router, private auth: AuthService) { }
+  ngOnInit() {}
+  openSidebarLateral(){}
+
+  logout(){
+    this.auth.logout().subscribe(
+      user &#x3D;&gt; {
+        this.router.navigate([&#x27;./login&#x27;]).
+        then(data &#x3D;&gt; {
+          console.log(&#x27;Route exists, redirection is done&#x27;);
+        })
+        .catch(e &#x3D;&gt; {
+          console.log(&#x27;Route not found, redirection stopped with no error raised&#x27;);
+        });
+      }
+    )
+    
+  }
+
+  onChangePage(pageName){
+    this.activePage &#x3D; pageName
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;button class&#x3D;&quot;open-nav-button&quot; (onClick)&#x3D;&quot;openSidebarLateral()&quot; &gt; &amp;#9776;Open&lt;/button&gt;
+&lt;div class&#x3D;&quot;sidenav nav-side-menu container-fluid&quot;&gt;
+    &lt;div class&#x3D;&quot;brand&quot;&gt;CORNING&lt;/div&gt;
+    &lt;i class&#x3D;&quot;fa fa-bars fa-2x toggle-btn&quot; data-toggle&#x3D;&quot;collapse&quot; data-target&#x3D;&quot;#menu-content&quot;&gt;&lt;/i&gt;
+    &lt;div class&#x3D;&quot;menu-list&quot;&gt;
+      &lt;ul id&#x3D;&quot;menu-content&quot; class&#x3D;&quot;menu-content collapse out&quot;&gt;
+        &lt;li&gt;
+          &lt;a href&#x3D;&quot;#&quot;&gt;&lt;i class&#x3D;&quot;fa fa-users fa-lg&quot;&gt;&lt;/i&gt; Usuários &lt;span class&#x3D;&quot;arrow&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;ul class&#x3D;&quot;sub-menu&quot; *ngIf &#x3D;&quot;(auth.currentUserLogged.role &#x3D;&#x3D; &#x27;admin&#x27;)&quot;&gt;
+            &lt;li [ngClass]&#x3D;&quot;{&#x27;active&#x27;: activePage &#x3D;&#x3D; &#x27;registerUser&#x27;}&quot;&gt;
+              &lt;a href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/registerUser&#x27;]&quot; (click)&#x3D;&quot;onChangePage(&#x27;registerUser&#x27;)&quot;&gt;Cadastrar Usuário&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li [ngClass]&#x3D;&quot;{&#x27;active&#x27;: activePage &#x3D;&#x3D; &#x27;searchUser&#x27;}&quot;&gt;
+              &lt;a href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/searchUser&#x27;]&quot; (click)&#x3D;&quot;onChangePage(&#x27;searchUser&#x27;)&quot;&gt;Buscar Usuários&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;li&gt;
+          &lt;!--&lt;a href&#x3D;&quot;javascript:void(0)&quot; class&#x3D;&quot;closebtn&quot;&gt;&amp;times;&lt;/a&gt;--&gt;
+          &lt;a href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/home&#x27;]&quot;&gt;Histórico&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/registerItem&#x27;]&quot;&gt;Cadastar Item&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href&#x3D;&quot;#&quot; [routerLink]&#x3D;&quot;[&#x27;/dashboard/about&#x27;]&quot;&gt;Sobre&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a href&#x3D;&quot;#&quot; (click)&#x3D;&quot;logout()&quot;&gt;Sair&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./sidebar.component.sass</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../styles.sass&quot;
+
+.nav-side-menu
+  overflow: auto
+  font-family: verdana
+  font-size: 12px
+  font-weight: 200
+  background-color: #2e353d
+  position: fixed
+  top: 0px
+  width: 15%
+  height: 100%
+  color: #e1ffff
+
+.nav-side-menu .brand 
+  background-color: #23282e
+  line-height: 50px
+  display: block
+  text-align: center
+  font-size: 14px
+
+.nav-side-menu .toggle-btn 
+  display: none
+
+.nav-side-menu ul,
+.nav-side-menu li 
+  list-style: none
+  padding: 0px
+  margin: 0px
+  line-height: 35px
+  cursor: pointer
+
+.nav-side-menu ul :not(.collapsed) .arrow:before,
+.nav-side-menu li :not(.collapsed) .arrow:before 
+  font-family: FontAwesome
+  content: &quot;\f078&quot;
+  display: inline-block
+  padding-left: 10px
+  padding-right: 10px
+  vertical-align: middle
+  float: right
+
+.nav-side-menu ul .active,
+.nav-side-menu li .active 
+  border-left: 3px solid #d19b3d
+  background-color: #2e353d
+
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active 
+  color: #d19b3d
+
+.nav-side-menu ul .sub-menu li.active a,
+.nav-side-menu li .sub-menu li.active a 
+  color: #d19b3d
+
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li 
+  background-color: #2e353d
+  border: none
+  line-height: 28px
+  border-bottom: 1px solid #23282e
+  margin-left: 0px
+
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover 
+  background-color: #020203
+
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before 
+  font-family: FontAwesome
+  content: &quot;\f105&quot;
+  display: inline-block
+  padding-left: 10px
+  padding-right: 10px
+  vertical-align: middle
+
+.nav-side-menu li 
+  padding-left: 0px
+  border-left: 3px solid #2e353d
+  border-bottom: 1px solid #23282e
+
+.nav-side-menu li a 
+  text-decoration: none
+  color: #e1ffff
+
+.nav-side-menu li a i 
+  padding-left: 10px
+  width: 20px
+  padding-right: 20px
+
+.nav-side-menu li:hover 
+  border-left: 3px solid #d19b3d
+  background-color: #2e353d
+  -webkit-transition: all 1s ease
+  -moz-transition: all 1s ease
+  -o-transition: all 1s ease
+  -ms-transition: all 1s ease
+  transition: all 1s ease
+
+@media (max-width: 767px)
+  .nav-side-menu 
+    position: relative
+    width: 100%
+    margin-bottom: 10px
+  
+  .nav-side-menu .toggle-btn
+    display: block
+    cursor: pointer
+    position: absolute
+    right: 10px
+    top: 10px
+    z-index: 10 !important
+    padding: 3px
+    background-color: #ffffff
+    color: #000
+    width: 40px
+    text-align: center
+  
+  .brand
+    text-align: left !important
+    font-size: 22px
+    padding-left: 20px
+    line-height: 50px !important
+  
+
+@media (min-width: 767px) 
+  .nav-side-menu .menu-list .menu-content 
+    display: block
+
+@media screen and (max-height: 450px) 
+  .sidenav 
+    padding-top: 15px
+  .sidenav 
+    a 
+      font-size: 18px
+  
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><button class="open-nav-button" (onClick)="openSidebarLateral()" > &#9776;Open</button><div class="sidenav nav-side-menu container-fluid">    <div class="brand">CORNING</div>    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>    <div class="menu-list">      <ul id="menu-content" class="menu-content collapse out">        <li>          <a href="#"><i class="fa fa-users fa-lg"></i> Usuários <span class="arrow"></span></a>        </li>        <ul class="sub-menu" *ngIf ="(auth.currentUserLogged.role == \'admin\')">            <li [ngClass]="{\'active\': activePage == \'registerUser\'}">              <a href="#" [routerLink]="[\'/dashboard/registerUser\']" (click)="onChangePage(\'registerUser\')">Cadastrar Usuário</a>            </li>            <li [ngClass]="{\'active\': activePage == \'searchUser\'}">              <a href="#" [routerLink]="[\'/dashboard/searchUser\']" (click)="onChangePage(\'searchUser\')">Buscar Usuários</a>            </li>        </ul>        <li>          <!--<a href="javascript:void(0)" class="closebtn">&times;</a>-->          <a href="#" [routerLink]="[\'/dashboard/home\']">Histórico</a>        </li>        <li>          <a href="#" [routerLink]="[\'/dashboard/registerItem\']">Cadastar Item</a>        </li>        <li>          <a href="#" [routerLink]="[\'/dashboard/about\']">Sobre</a>        </li>        <li>          <a href="#" (click)="logout()">Sair</a>        </li>      </ul>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ControlMessagesComponent', 'selector': 'app-control-messages'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MenuTopComponent', 'selector': 'app-menu-top'},{'name': 'RegisterItemComponent', 'selector': 'app-register-item'},{'name': 'RegisterUserComponent', 'selector': 'app-register-user'},{'name': 'SearchUserComponent', 'selector': 'app-search-user'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SidebarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SidebarComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
