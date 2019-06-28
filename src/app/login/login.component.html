@@ -3,14 +3,14 @@
     <img src="assets/images/corning-logo.png"/>
     <div class="form-group">
       <label for="login">Login</label>
-      <input type="text" formControlName="login" id="login" class="form-control" aria-describedby="loginHelp" placeholder="Enter Login" [ngClass]="{ 'is-invalid': submitted && formControl.login.errors }">
+      <input type="text" formControlName="login" id="login" class="form-control" aria-describedby="loginHelp" placeholder="Login" [ngClass]="{ 'is-invalid': submitted && formControl.login.errors }">
       <div *ngIf="submitted && formControl.login.errors" class="invalid-feedback">
         <div *ngIf="formControl.login.errors.required">O Login é obrigatório.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" formControlName="password" id="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && formControl.password.errors }">
+      <input type="password" formControlName="password" id="password" class="form-control" placeholder="Senha" [ngClass]="{ 'is-invalid': submitted && formControl.password.errors }">
       <div *ngIf="submitted && formControl.password.errors" class="invalid-feedback">
         <div *ngIf="formControl.password.errors.required">A senha é obrigatória.</div>
       </div>
