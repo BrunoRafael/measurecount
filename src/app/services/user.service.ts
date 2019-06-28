@@ -26,7 +26,7 @@ export class UserService {
             map( users => {
                 if(users){
                     for(let i in users){
-                        localStorage.setItem(`${users[i].login}` , JSON.stringify(users[i]));
+                        localStorage.setItem(users[i].id, JSON.stringify(users[i]));
                     }
                 }
 

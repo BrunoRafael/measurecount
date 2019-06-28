@@ -46,7 +46,7 @@ export class RegisterUserComponent implements OnInit {
         (user) => {
           this.router.navigate(["/dashboard/home"])
               .then(data => {
-                this.toastr.success('Sucesso', `Usuário ${user["firstName"]} cadastrado com sucesso`);
+                this.toastr.success('Sucesso', `Usuário ${user["firstName"] + " " + user["lastName"]} cadastrado com sucesso`);
               })
               .catch(e => {
                 this.toastr.error('Erro', e.message);

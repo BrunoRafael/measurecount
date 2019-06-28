@@ -66,8 +66,8 @@ export class SearchUserComponent implements OnInit {
             let savedUser = this.users[i];
             if(_.isEqual(removedUser, savedUser)){
                 this.users.splice(i, 1);
-                localStorage.removeItem(removedUser.login);
-                this.toastr.success('Sucesso',  `Usuário ${removedUser["firstName"]} removido com sucesso!`, );
+                localStorage.removeItem(removedUser.id);
+                this.toastr.success('Sucesso',  `Usuário ${removedUser["firstName"] + " " + removedUser["lastName"]}  removido com sucesso!`, );
                 if(this.userService.currentUserLogged().login == removedUser.login &&
                   this.userService.currentUserLogged().firstName == removedUser.firstName){
                   this.router.navigate(["./login"])
