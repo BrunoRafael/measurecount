@@ -38,10 +38,14 @@ export class LoginComponent implements OnDestroy {
     if(!this.loginForm.invalid){
       let credentials = this.loginForm.value;
       this.loginSubscribe = this.userService.login(credentials.login, credentials.password).subscribe(
-        () => { 
+        (loggedUser) => { 
           this.router.navigate(["/dashboard"])
             .then(data => {
-              this.toastr.success('Seja bem vindo!', "");
+              if(loggedUser["firstName"] == "admin"){
+                this.toastr.success('Sucesso', `Seja bem vindo!`);
+              } else {
+                this.toastr.success('Sucesso', `Seja bem vindo ${ loggedUser["firstName"] }`);
+              }
             })
             .catch(e => {
               this.toastr.warning('Error', 'Não foi possível concluir autenticação');

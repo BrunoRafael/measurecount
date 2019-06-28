@@ -42,9 +42,11 @@ export class UserService {
     removeUser(user: User){
         return this.httpService.removeUser(user).pipe(
             map( response => {
-                //if(response){
+                if(response == "success"){
                     return user;
-                //}
+                } else {
+                    //TRATAR
+                }
             }),
             catchError(err => {
                 console.log('caught mapping error and rethrowing', err);
@@ -56,7 +58,11 @@ export class UserService {
     updateUser(user: User){
         return this.httpService.updateUser(user).pipe(
             map( response => {
-                return user;
+                if(response == "success"){
+                    return user;
+                } else {
+                    //TRATAR
+                }
             }),
             catchError(err => {
                 console.log('caught mapping error and rethrowing', err);
@@ -68,7 +74,11 @@ export class UserService {
     createUser(user: User){
         return this.httpService.createUser(user).pipe(
             map( response => {
-                return response;
+                if(response == "success"){
+                    return user;
+                } else {
+                    //TRATAR
+                }
             }),
             catchError(err => {
                 console.log('caught mapping error and rethrowing', err);
@@ -100,6 +110,7 @@ export class UserService {
     logout(){
         localStorage.removeItem("loggedUser");
         this.currentLoggedUserSubject.next(null);
+        localStorage.clear();
         return new Observable(observer => {
             observer.next(null);
         });
