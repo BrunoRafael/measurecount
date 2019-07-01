@@ -10,8 +10,11 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   activePage = 'historyPage'
+  loggedUser: any;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) {
+    this.loggedUser = userService.currentUserLogged().firstName + ' ' + userService.currentUserLogged().lastName;
+  }
   ngOnInit() {}
   openSidebarLateral(){}
 

@@ -23,6 +23,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     DashboardRouting,
     BsDropdownModule.forRoot()
   ],
-  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent, RegisterUserComponent, SearchUserComponent, EditUserComponent ]
+  declarations: [ DashboardComponent, SidebarComponent, MenuTopComponent, AboutComponent, RegisterItemComponent, 
+    RegisterUserComponent, SearchUserComponent, EditUserComponent ]
 })
 export class DashboardModule { }

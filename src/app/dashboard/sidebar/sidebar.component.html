@@ -1,32 +1,36 @@
 <button class="open-nav-button" (onClick)="openSidebarLateral()" > &#9776;Open</button>
 <div class="sidenav nav-side-menu container-fluid">
-    <div class="brand">CORNING</div>
+    <div class="container avatar-container">
+      <img class="avatar" src="assets/images/avatar.png" data-toggle="tooltip" data-placement="bottom" [title]="loggedUser"/>
+      <span class="logged-user-avatar" data-toggle="tooltip" data-placement="bottom" [title]="loggedUser">{{loggedUser}}</span>
+    </div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
     <div class="menu-list">
       <ul id="menu-content" class="menu-content collapse out">
         <li>
-          <a href="javascript:void(0)"><i class="fa fa-users fa-lg"></i> Usuários <span class="arrow"></span></a>
+          <a><i class="fa fa-users fa-lg"></i> Usuários <span class="arrow"></span></a>
         </li>
         <ul class="sub-menu" *ngIf ="(userService.currentUserLogged().role == 'admin')">
             <li [ngClass]="{'active': activePage == 'registerUser'}">
-              <a href="#" [routerLink]="['/dashboard/registerUser']" (click)="onChangePage('registerUser')">Cadastrar Usuário</a>
+              <a [routerLink]="['/dashboard/registerUser']" (click)="onChangePage('registerUser')">Cadastrar Usuário</a>
             </li>
             <li [ngClass]="{'active': activePage == 'searchUser'}">
-              <a href="#" [routerLink]="['/dashboard/searchUser']" (click)="onChangePage('searchUser')">Buscar Usuários</a>
+              <a [routerLink]="['/dashboard/searchUser']" (click)="onChangePage('searchUser')">Buscar Usuários</a>
             </li>
         </ul>
         <li>
-          <a href="#" [routerLink]="['/dashboard/home']" [ngClass]="{'active': activePage == 'historyPage'}" (click)="onChangePage('historyPage')">Histórico</a>
+          <a [routerLink]="['/dashboard/home']" [routerLinkActive]="['router-link-active']" [ngClass]="{'active': activePage == 'historyPage'}" (click)="onChangePage('historyPage')">Histórico</a>
+        </li>
+        <!--<li>
+          <a [routerLink]="['/dashboard/registerItem']" [ngClass]="{'active': activePage == 'registerItemPage'}" (click)="onChangePage('registerItemPage')">Cadastar Item</a>
+        </li>-->
+        <li>
+          <a [routerLink]="['/dashboard/about']" [ngClass]="{'active': activePage == 'aboutPage'}" (click)="onChangePage('aboutPage')">Sobre</a>
         </li>
         <li>
-          <a href="#" [routerLink]="['/dashboard/registerItem']" [ngClass]="{'active': activePage == 'registerItemPage'}" (click)="onChangePage('registerItemPage')">Cadastar Item</a>
-        </li>
-        <li>
-          <a href="#" [routerLink]="['/dashboard/about']" [ngClass]="{'active': activePage == 'aboutPage'}" (click)="onChangePage('aboutPage')">Sobre</a>
-        </li>
-        <li>
-          <a href="#" (click)="logout()" [ngClass]="{'active': activePage == 'logoutPage'}" (click)="onChangePage('logoutPage')">Sair</a>
+          <a (click)="logout()" [ngClass]="{'active': activePage == 'logoutPage'}" (click)="onChangePage('logoutPage')">Sair</a>
         </li>
       </ul>
   </div>
+  <div class="brand">CORNING</div>
 </div>
